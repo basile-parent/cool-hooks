@@ -1,0 +1,31 @@
+{
+  "name": "@basile-parent/cool-hooks",
+  "version": "0.0.1",
+  "description": "A bunch of cool react hooks",
+  "main": "./dist/index.js",
+  "author": "Basile Parent",
+  "license": "MIT",
+  "homepage": "https://github.com/basile-parent/cool-hooks#readme",
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "clean": "rm -rf ./dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.co m/basile-parent/cool-hooks.git"
+  },
+  "keywords": [
+    "react",
+    "hooks"
+  ],
+  "bugs": {
+    "url": "https://github.com/basile-parent/cool-hooks/issues"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.7",
+    "react": "^18.2.0",
+    "tslint": "^6.1.3",
+    "typescript": "^5.0.4"
+  }
+}
