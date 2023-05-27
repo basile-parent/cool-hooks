@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "A bunch of cool react hooks",
   "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "author": "Basile Parent",
   "license": "MIT",
   "homepage": "https://github.com/basile-parent/cool-hooks#readme",
@@ -11,6 +12,9 @@
     "clean": "rm -rf ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": [
+    "dist/**/*.*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.co m/basile-parent/cool-hooks.git"
