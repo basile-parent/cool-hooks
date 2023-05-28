@@ -17,7 +17,7 @@
     "noFallthroughCasesInSwitch": true,
 
     /* Report errors in .js files. */
-    "jsx": "react",
+    "jsx": "react-jsx",
     /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
     "declaration": true,
     /* Generates corresponding '.d.ts' file. */
@@ -26,7 +26,9 @@
     // "outFile": "./",                       /* Concatenate and emit output to single file. */
     "outDir": "./dist",
     /* Redirect output structure to the directory. */
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "esModuleInterop": true,
+    "types": ["node", "jest", "@testing-library/jest-dom"]
   },
   "include": ["src"],
 }
