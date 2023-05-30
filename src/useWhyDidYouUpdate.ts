@@ -1,25 +1,30 @@
 import { useRef, useEffect } from "react"
 
-const useWhyDidYouUpdate = (name: string, props: any) => {
+type ChangesObject = {
+    [key: string]: unknown
+}
+const useWhyDidYouUpdate = <TProps extends object>(name: string, props: TProps) => {
     // Get a mutable ref object where we can store props ...
     // ... for comparison next time this hook runs.
-    const previousProps = useRef();
+    const previousProps = useRef<TProps>();
+
     useEffect(() => {
         if (previousProps.current) {
-
-
             // Get all keys from previous and current props
-            const allKeys = Object.keys({ ...previousProps.current as any, ...props });
+            const allKeys = Object.keys({ ...previousProps.current as TProps, ...props });
+
             // Use this object to keep track of changed props
-            const changesObj: any = {};
+            const changesObj: ChangesObject = {};
+
             // Iterate through keys
             allKeys.forEach((key) => {
+                const typedKey = key as keyof typeof props
                 // If previous is different from current
-                if (previousProps.current![key] !== props[key]) {
+                if (previousProps.current?.[typedKey] !== props[typedKey]) {
                     // Add to changesObj
                     changesObj[key] = {
-                        from: previousProps.current![key],
-                        to: props[key],
+                        from: previousProps.current?.[typedKey],
+                        to: props[key as keyof typeof props],
                     };
                 }
             });
