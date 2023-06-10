@@ -1,0 +1,37 @@
+---
+sidebar_position: 2
+image: /cool-hooks/img/cool-hooks.png
+description: Hook similar to useDidEffect but only when the component updates
+---
+
+# useDidUpdateEffect
+
+This hooks act and have the same syntax as the `useEffect` hook. The only difference is the callback does not execute on the first render.
+It will then be executed each time the dependencies have changed
+
+:::tip
+
+Using a void array as dependency will ends to a pointless hook as it will never be executed
+
+```jsx
+useDidUpdateEffect(() => {
+    // Never been called
+}, [])
+```
+
+:::
+
+## Usage
+
+```tsx
+const MyComponent = ({ prop1 }: MyComponentProps) => {
+    
+    useDidUpdateEffect(() => {
+        console.log("prop1 has changed", prop1)
+    }, [ prop1 ])
+
+    return (
+        <>...</>
+    )
+}
+```

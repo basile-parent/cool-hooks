@@ -47,7 +47,8 @@ export type ChangedPropsAggregation = {
 }
 
 export const logChanges = (groupName: string, componentName: string, changesObj: ChangedPropsAggregation): void => {
-    console.groupCollapsed(`%c[${groupName}]%c ${componentName}:%c ${Object.keys(changesObj).join(", ")}`, "color: red; font-weight: 700;", "color: black", "font-weight: normal;")
+    console.groupCollapsed(`%c[${groupName}]%c ${componentName}:%c ${Object.keys(changesObj).join(", ")}`,
+        "color: red; font-weight: 700;", "color: black", "font-weight: normal;")
     Object.entries(changesObj).forEach(([key, value]) => {
         console.log(key, value)
     })

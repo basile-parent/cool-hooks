@@ -1,0 +1,67 @@
+---
+sidebar_position: 1
+image: /cool-hooks/img/cool-hooks.png
+description: Debug hooks to trace component renderings
+---
+
+# useWhyDidYouUpdate
+
+This hooks will create a log in the console whenever a component is rerendered by props changed.
+The log will show which component is rendered and which prop have been modified.
+
+This hook is not meant to be used in production (it's a debug hook) although it's possible.
+
+:::note
+
+The hook will not log anything on the component first render (mount).
+
+:::
+
+:::tip
+
+This is a debug hook. You don't need to have it installed on your project dependencies,
+you can have in its devDependencies (if you don't use any production hook of this package).
+
+This way, you will have a notification if you try to build your project without having cleaned this hook usages.
+
+:::
+
+## Usage
+
+```tsx
+const MyComponent = (props: MyComponentPros) => {
+    
+    useWhyDidYouUpdate("ChildComponent", props)
+
+    return (
+        <>...</>
+    )
+}
+```
+
+## Result
+
+To see the results, open your browser's DevTools. The hooks will log all changed properties on a formatted group.
+
+export const LogExample = () => (
+    <div className="codeBlockContainer_node_modules-\@docusaurus-theme-classic-lib-theme-CodeBlock-Container-styles-module">
+        <pre>
+            <code>
+                <p style={{ margin: "0 0 10px 0" }}>
+                    ▼&nbsp;
+                    <span style={{ color: "var(--custom-whyDidYouUpdate-highlight)", fontWeight: 700, }}>[why-did-you-update] </span>
+                    <span style={{ fontWeight: 700, }}>MyComponent: </span>
+                    prop1, prop2
+                </p>
+                <p style={{ margin: "0 0 0 4px", padding: "3px 0 3px 30px", borderLeft: "3px solid grey" }}>
+                    prop1:  &#123; from: <span style={{ color: "var(--ifm-color-primary-lightest)" }}>0</span>, to: <span style={{ color: "var(--ifm-color-primary-lightest)" }}>1</span> &#125;
+                </p>
+                <p style={{ margin: "0 0 0 4px", padding: "3px 0 3px 30px", borderLeft: "3px solid grey" }}>
+                    prop2:  &#123; from: <span style={{ color: "var(--custom-code-string)" }}>&quot;a&quot;</span>, to: <span style={{ color: "var(--custom-code-string)" }}>&quot;b&quot;</span> &#125;
+                </p>
+            </code>
+        </pre>
+    </div>
+)
+
+<LogExample />
