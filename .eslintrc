@@ -19,7 +19,8 @@
       {
         "ts-ignore": "allow-with-description"
       }
-    ]
+    ],
+    "react-hooks/exhaustive-deps": "off",
   },
   "overrides": [
     {

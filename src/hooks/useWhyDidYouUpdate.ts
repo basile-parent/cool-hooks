@@ -19,7 +19,7 @@ const useWhyDidYouUpdate = <P extends AnyObject>(name: string, props: P, options
 
     useEffect(() => {
         if (previousProps.current) {
-            const allKeys = Object.keys({ ...(previousProps.current as any), ...props }).filter((key) => !excludeProps.includes(key))
+            const allKeys = Object.keys({ ...previousProps.current, ...props }).filter((key) => !excludeProps.includes(key))
             const changesObj: ChangedPropsAggregation = {}
             allKeys.forEach((key) => {
                 const previousValue = previousProps.current?.[key];
