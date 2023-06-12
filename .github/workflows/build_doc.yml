@@ -19,7 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: redkubes/docusaurus-deploy-action@v1
+      - name: Docusaurus BuildDeploy Action
+        uses: redkubes/docusaurus-deploy-action@v1.2
         with:
           source-folder: doc
           git-user: basile-parent
