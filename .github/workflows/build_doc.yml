@@ -22,3 +22,6 @@ jobs:
       - uses: redkubes/docusaurus-deploy-action@v1
         with:
           source-folder: doc
+          git-user: basile-parent
+          git-password: ${{ secrets.GITHUB_TOKEN }}
+          deployment-branch: gh-pages
