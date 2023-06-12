@@ -16,13 +16,25 @@ on:
 
 jobs:
   deploy:
+    name: Deploy doc to GitHub Pages
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Docusaurus BuildDeploy Action
-        uses: redkubes/docusaurus-deploy-action@v1.2
+      - uses: actions/setup-node@v3
         with:
-          source-folder: doc
-          git-user: basile-parent
-          git-password: ${{ secrets.GITHUB_TOKEN }}
-          deployment-branch: gh-pages
+          node-version: 18
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build website
+        run: yarn build
+
+      # Popular action to deploy to GitHub Pages:
+      # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build

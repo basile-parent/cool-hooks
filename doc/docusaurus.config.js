@@ -11,8 +11,7 @@ const config = {
   favicon: "img/cool-hooks.png",
 
   // Set the production url of your site here
-  // url: "https://www.npmjs.com/package/@basile-parent/cool-hooks",
-  url: "https://www.npmjs.com/",
+  url: "https://basile-parent.github.io/",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often "/<projectName>/"
   baseUrl: "/cool-hooks/",
@@ -21,6 +20,8 @@ const config = {
   // If you aren"t using GitHub pages, you don"t need these.
   organizationName: "basile-parent", // Usually your GitHub org/user name.
   projectName: "cool-hooks", // Usually your repo name.
+  deploymentBranch: "gh-pages",
+  trailingSlash: false,
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
