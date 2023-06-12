@@ -1,3 +1,5 @@
 # Cool React Hooks
 
-Documentation to come...
+**[Documentation](https://basile-parent.github.io/cool-hooks)**
+
+A bunch of useful react hooks
