@@ -35,3 +35,10 @@ const MyComponent = ({ prop1 }: MyComponentProps) => {
     )
 }
 ```
+
+This hook is designed to be used just as `useEffect`.
+
+| Parameter      | Description                                                        |
+|----------------|--------------------------------------------------------------------|
+| *callbackFn*   | The callback function, executed when the dependencies **updates**. |
+| *dependencies* | *(optional)* The dependencies to listen.                           |
