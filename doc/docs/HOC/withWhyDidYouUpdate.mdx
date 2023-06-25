@@ -1,27 +1,33 @@
 ---
 sidebar_position: 1
-description: Debug hooks to trace component renderings
+description: Debug HOC to trace component renderings
 ---
 
-# useWhyDidYouUpdate
+# withWhyDidYouUpdate
 
-This hooks will create a log in the console whenever a component is rerendered by props changed.
+:::info
+
+This HOC has the exact same behaviour as the [useWhyDidYouUpdate](/docs/HOCs/useWhyDidYouUpdate) HOC.
+
+:::
+
+This HOC will create a log in the console whenever a component is rerendered by props changed.
 The log will show which component is rendered and which prop have been modified.
 
-This hook is not meant to be used in production (it's a debug hook) although it's possible.
+This HOC is not meant to be used in production (it's a debug HOC) although it's possible.
 
 :::note
 
-The hook will not log anything on the component first render (mount).
+The HOC will not log anything on the component first render (mount).
 
 :::
 
 :::tip
 
-This is a debug hook. You don't need to have it installed on your project dependencies,
-you can have in its devDependencies (if you don't use any production hook of this package).
+This is a debug HOC. You don't need to have it installed on your project dependencies,
+you can have in its devDependencies (if you don't use any production HOC of this package).
 
-This way, you will have a notification if you try to build your project without having cleaned this hook usages.
+This way, you will have a notification if you try to build your project without having cleaned this HOC usages.
 
 :::
 
@@ -29,23 +35,21 @@ This way, you will have a notification if you try to build your project without 
 
 ```tsx
 const MyComponent = (props: MyComponentPros) => {
-    
-    useWhyDidYouUpdate("MyComponent", props)
-
     return (
         <>...</>
     )
 }
+
+export default withWhyDidYouUpdate(MyComponent)
 ```
 
-| Parameter       | Description                                                                           |
-|-----------------|---------------------------------------------------------------------------------------|
-| *componentName* | The component name that will be rendered in the log (cannot be extrapolated in hooks). |
-| *props*         | The component props. You can all the component props or only those you want to watch  |
+| Parameter   | Description                                                                           |
+|-------------|---------------------------------------------------------------------------------------|
+| *Component* | The component to watch.                                                               |
 
 ## Result
 
-To see the results, open your browser's DevTools. The hooks will log all changed properties on a formatted group.
+To see the results, open your browser's DevTools. The HOCs will log all changed properties on a formatted group.
 
 export const LogExample = () => (
     <div className="codeBlockContainer_node_modules-\@docusaurus-theme-classic-lib-theme-CodeBlock-Container-styles-module">

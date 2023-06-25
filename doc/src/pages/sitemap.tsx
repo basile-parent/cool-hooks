@@ -11,11 +11,18 @@ const Sitemap = () => {
                 <li><Link to="/">Home page</Link></li>
                 <li><Link to="/docs/introduction">Introduction</Link></li>
                 <li>
-                    <Link to="/category/hooks/category/hooks">All available hooks</Link>
+                    <Link to="/docs/category/hooks">All available hooks</Link>
 
                     <ul>
                         <li><Link to="/docs/hooks/useWhyDidYouUpdate">useWhyDidYouUpdate</Link></li>
                         <li><Link to="/docs/hooks/useDidUpdateEffect">useDidUpdateEffect</Link></li>
+                    </ul>
+                </li>
+                <li>
+                    <Link to="/docs/category/hoc">All available HOCs</Link>
+
+                    <ul>
+                        <li><Link to="/docs/hoc/withWhyDidYouUpdate">withWhyDidYouUpdate</Link></li>
                     </ul>
                 </li>
             </ul>
