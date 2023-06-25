@@ -94,6 +94,10 @@ const config = {
                 label: "Hooks",
                 to: "/docs/category/hooks",
               },
+              {
+                label: "Sitemap",
+                to: "/sitemap",
+              },
             ],
           },
           {
