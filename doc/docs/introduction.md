@@ -7,7 +7,7 @@ sidebar_position: 1
 This repo group a bunch of useful React hooks
 
 ## Requirements
-React version ??+
+React version 16+
 
 ## Installation
 
@@ -18,4 +18,4 @@ you can install it as a dependency:
 
 If you want to only use debug hooks, you can install it as dev dependency
 
-`npm install -D @basile-parent/cool-hooks`
+`npm install --save-dev @basile-parent/cool-hooks`
