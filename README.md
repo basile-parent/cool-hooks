@@ -1,4 +1,4 @@
-<h1 style="text-align: center;">Cool hooks</h1>
+<h1 align="center">Cool hooks</h1>
 
 ![Current version badge](https://img.shields.io/npm/v/@basile-parent/cool-hooks/latest.svg)
 ![Licence](https://img.shields.io/github/license/basile-parent/cool-hooks)
