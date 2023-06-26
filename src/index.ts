@@ -1,3 +1,5 @@
+export { default as useDidUpdateEffect } from "./hooks/useDidUpdateEffect"
+export { default as useStorageState } from "./hooks/useStorageState"
 export { default as useWhyDidYouUpdate } from "./hooks/useWhyDidYouUpdate"
 export type { UseWhyDidYouUpdateOptions } from "./hooks/useWhyDidYouUpdate"
 export { default as withWhyDidYouUpdate } from "./hoc/withWhyDidYouUpdate"

@@ -31,12 +31,12 @@ const ChildComponent = (props: { count: number, countSquared: number, fixed: str
 describe("useWhyDidYouUpdate tests", () => {
     it("should log a formatted message for changed props when the component is rerendered", async () => {
         global.console = {
-            log: jest.fn(),
-            groupCollapsed: jest.fn(),
-            groupEnd: jest.fn(),
+            log: vi.fn(),
+            groupCollapsed: vi.fn(),
+            groupEnd: vi.fn(),
         } as any
 
-        render(<TestedComponent/>)
+        render(<TestedComponent />)
         const button = screen.getByText(/Increment/i)
         const count = screen.getByText(/Initial count/i)
         const countSquared = screen.getByText(/Count squared/i)

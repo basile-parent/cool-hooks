@@ -30,6 +30,12 @@
     "esModuleInterop": true,
     "types": ["node", "jest", "@testing-library/jest-dom"]
   },
-  "include": ["src/**/*"],
-  "exclude": ["src/**/*.test.*"]
+  "include": [
+    "src",
+    "node_modules/vitest/globals.d.ts"
+  ],
+  "types": [
+    "vitest/globals",
+    "@testing-library/jest-dom"
+  ]
 }

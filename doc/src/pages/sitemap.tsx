@@ -2,6 +2,7 @@ import React from "react"
 import Link from "@docusaurus/Link"
 import Layout from "@theme/Layout"
 import styles from "./sitemap.module.css"
+import useStorageState from "../../../src/hooks/useStorageState";
 
 const Sitemap = () => {
     return (
@@ -16,6 +17,7 @@ const Sitemap = () => {
                     <ul>
                         <li><Link to="/docs/hooks/useWhyDidYouUpdate">useWhyDidYouUpdate</Link></li>
                         <li><Link to="/docs/hooks/useDidUpdateEffect">useDidUpdateEffect</Link></li>
+                        <li><Link to="/docs/hooks/useStorageState">useStorageState</Link></li>
                     </ul>
                 </li>
                 <li>

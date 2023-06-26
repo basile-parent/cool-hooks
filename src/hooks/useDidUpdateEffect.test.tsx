@@ -17,7 +17,7 @@ const TestedComponent = ({ callback }: { callback: () => void}) => {
 
 describe("useDidUpdateEffect tests", () => {
     it("should execute callback only on update (not on mount)", async () => {
-        const callback = jest.fn()
+        const callback = vi.fn()
 
         render(<TestedComponent callback={callback} />)
         const button = screen.getByText(/Increment/i)

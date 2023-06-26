@@ -31,9 +31,9 @@ const InjectedComponent = withWhyDidYouUpdate(ChildComponent)
 describe("withWhyDidYouUpdate tests", () => {
     it("should log a formatted message for changed props when the component is rerendered", async () => {
         global.console = {
-            log: jest.fn(),
-            groupCollapsed: jest.fn(),
-            groupEnd: jest.fn(),
+            log: vi.fn(),
+            groupCollapsed: vi.fn(),
+            groupEnd: vi.fn(),
         } as any
 
         render(<TestedComponent/>)
