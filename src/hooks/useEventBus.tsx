@@ -12,23 +12,23 @@ type Subscribers<T> = {
     [channel: string]: SubscriberCallback<T>[]
 }
 
-const EventBusContext = createContext<EventBusContextType<any> | null>(null);
+const EventBusContext = createContext<EventBusContextType<unknown> | null>(null);
 
-export function EventBusProvider({ children }: PropsWithChildren<any>) {
-    const [subscribers, setSubscribers] = useState<Subscribers<any>>({})
+export function EventBusProvider({ children }: PropsWithChildren) {
+    const [subscribers, setSubscribers] = useState<Subscribers<unknown>>({})
 
-    const emit = (channel: string, message: any): void => {
+    const emit = (channel: string, message: unknown): void => {
         const channelSubscribers = subscribers[channel] || []
         channelSubscribers.forEach(callback => callback(message))
     }
-    const subscribe = (channel: string, callback: SubscriberCallback<any>): void => {
+    const subscribe = (channel: string, callback: SubscriberCallback<unknown>): void => {
         setSubscribers(subscribers => ({
             ...subscribers,
             [ channel ]: [ ...(subscribers[channel] || []), callback ]
         }))
     }
 
-    const unsubscribe = (channel: string, callback: SubscriberCallback<any>): void => {
+    const unsubscribe = (channel: string, callback: SubscriberCallback<unknown>): void => {
         setSubscribers(subscribers => ({
             ...subscribers,
             [ channel ]: (subscribers[channel] || []).filter(subscriberCallback => subscriberCallback !== callback)
