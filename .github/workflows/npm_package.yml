@@ -47,6 +47,6 @@ jobs:
       - name: npm publish
         run: |
           npm install
-          npm publish
+          npm publish --access public
         env:
           CI: true
