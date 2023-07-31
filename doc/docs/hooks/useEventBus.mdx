@@ -17,7 +17,8 @@ import {EventBusProvider} from "./useEventBus";
 const App = () => {
     return (
         <EventBusProvider>
-            <ComponentUsingEventBus/>
+            <ComponentSubscribing />
+            <ComponentEmitting />
         </EventBusProvider>
     )
 }
@@ -33,8 +34,8 @@ your trying to update an unmounted component.
 :::
 
 ```tsx
-const ComponentUsingEventBus = ({prop1}: MyComponentProps) => {
-    const {subscribe, unsubscribe, emit} = useEventBus()
+const ComponentSubscribing = () => {
+    const {subscribe, unsubscribe} = useEventBus<string>()
 
     useEffect(() => {
         subscribe("channel-1", onMessage)
@@ -47,7 +48,19 @@ const ComponentUsingEventBus = ({prop1}: MyComponentProps) => {
     }
 
     return (
-        <button onClick={() => emit("channel-1", "Some message")}>Send message</button>
+        <>...</>
+    )
+}
+```
+
+```tsx
+const ComponentEmitting = () => {
+    const {emit} = useEventBus<string>()
+
+    return (
+        <button onClick={() => emit("channel-1", "Some message")}>
+            Send message
+        </button>
     )
 }
 ```
@@ -55,11 +68,11 @@ const ComponentUsingEventBus = ({prop1}: MyComponentProps) => {
 ### useEventBus
 
 ```typescript
-type CallbackType = (message: any) => void
+type CallbackType = <T>(message: T) => void
 ```
 
-| Return        | Signature                                         | Description                                                                                      |
-|---------------|---------------------------------------------------|--------------------------------------------------------------------------------------------------|
-| *subscribe*   | (channel: string, callback: CallbackType) => void | Subscribe to a channel an call the _callback_ function whenever a message is emitted through it. |
-| *unsubscribe* | (channel: string, callback: CallbackType) => void | Unsubscribe to a channel. The _callback_ function must be the same used for the subscription.    |
-| *emit*        | (channel: string, message: any) => void           | Emit a message on a specific channel                                                             |                                                             
+| Return        | Signature                                               | Description                                                                                      |
+|---------------|---------------------------------------------------------|--------------------------------------------------------------------------------------------------|
+| *subscribe*   | (channel: string, callback: CallbackType&lt;T>) => void | Subscribe to a channel an call the _callback_ function whenever a message is emitted through it. |
+| *unsubscribe* | (channel: string, callback: CallbackType&lt;T>) => void | Unsubscribe to a channel. The _callback_ function must be the same used for the subscription.    |
+| *emit*        | (channel: string, message: T) => void                   | Emit a message on a specific channel                                                             |                                                             

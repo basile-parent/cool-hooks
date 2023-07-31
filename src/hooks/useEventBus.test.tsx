@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event"
 import {EventBusProvider} from "./useEventBus";
 import {useEventBus} from "../index";
 
-const TestedComponent = ({callback}: { callback: (message: any) => void }) => {
+const TestedComponent = ({callback}: { callback: (message: string) => void }) => {
     return (
         <EventBusProvider>
             <EmitterComponent/>
@@ -12,8 +12,8 @@ const TestedComponent = ({callback}: { callback: (message: any) => void }) => {
     )
 }
 
-const SubscriberComponent = ({callback}: { callback: (message: any) => void }) => {
-    const {subscribe, unsubscribe} = useEventBus();
+const SubscriberComponent = ({callback}: { callback: (message: string) => void }) => {
+    const {subscribe, unsubscribe} = useEventBus<string>();
 
     return (
         <div>
@@ -25,7 +25,7 @@ const SubscriberComponent = ({callback}: { callback: (message: any) => void }) =
 
 
 const EmitterComponent = () => {
-    const {emit} = useEventBus();
+    const {emit} = useEventBus<string>();
 
     return (
         <div>
