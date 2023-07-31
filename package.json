@@ -13,9 +13,10 @@
     "test": "vitest",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "set-upstream": "git branch --set-upstream-to origin/main",
-    "release:major": "npm run set-upstream && release major",
-    "release:minor": "npm run set-upstream && release minor",
-    "release:patch": "npm run set-upstream && release patch"
+    "release:common":"npm run lint && npm run test && npm run build && npm run set-upstream",
+    "release:major": "npm run release:common && release major",
+    "release:minor": "npm run release:common && release minor",
+    "release:patch": "npm run release:common && release patch"
   },
   "files": [
     "dist/**/*.*"
