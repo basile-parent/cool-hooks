@@ -1,0 +1,65 @@
+---
+sidebar_position: 4
+description: Use event driven architecture in React 
+---
+
+# useEventBus
+
+This hooks allow your app to subscribe to an event bus, making it compliant to event driven development.
+
+## Usage
+
+This hook rely on a context so first, you have to wrap your component using the event bus with the context provider
+
+```tsx
+import {EventBusProvider} from "./useEventBus";
+
+const App = () => {
+    return (
+        <EventBusProvider>
+            <ComponentUsingEventBus/>
+        </EventBusProvider>
+    )
+}
+```
+
+Then, you can subscribe / unsubscribe to a channel and emit messages.
+
+:::warning
+
+Always make sure to unsubscribe the channels you subscribed in to avoid memory leaks and error in console saying
+your trying to update an unmounted component.
+
+:::
+
+```tsx
+const ComponentUsingEventBus = ({prop1}: MyComponentProps) => {
+    const {subscribe, unsubscribe, emit} = useEventBus()
+
+    useEffect(() => {
+        subscribe("channel-1", onMessage)
+
+        return () => unsubscribe("channel-1", onMessage)
+    }, [])
+
+    const onMessage = (message: string) => {
+        console.log(message)
+    }
+
+    return (
+        <button onClick={() => emit("channel-1", "Some message")}>Send message</button>
+    )
+}
+```
+
+### useEventBus
+
+```typescript
+type CallbackType = (message: any) => void
+```
+
+| Return        | Signature                                         | Description                                                                                      |
+|---------------|---------------------------------------------------|--------------------------------------------------------------------------------------------------|
+| *subscribe*   | (channel: string, callback: CallbackType) => void | Subscribe to a channel an call the _callback_ function whenever a message is emitted through it. |
+| *unsubscribe* | (channel: string, callback: CallbackType) => void | Unsubscribe to a channel. The _callback_ function must be the same used for the subscription.    |
+| *emit*        | (channel: string, message: any) => void           | Emit a message on a specific channel                                                             |                                                             
