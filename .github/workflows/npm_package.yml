@@ -44,6 +44,7 @@ jobs:
       - name: Authenticate with NPM
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
+          echo "always-auth = true" >> ~/.npmrc
       - name: npm publish
         run: |
           npm install
